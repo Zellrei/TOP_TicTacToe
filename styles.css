@@ -1,5 +1,27 @@
-#gameboard {
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
   display: grid;
-  grid-template-columns: 30px 30px 30px;
-  grid-template-rows: 30px 30px 30px;
+  justify-content: center;
+  text-align: center;
+}
+
+#gameboard {
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  gap: 0px;
+}
+
+.cell {
+  display: grid;
+  align-items: center;
+  border: 1px solid black;
+  height: 100px;
 }

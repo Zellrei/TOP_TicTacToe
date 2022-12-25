@@ -8,7 +8,7 @@ const boardModule = (() => {
   const clear = () => gameboardArr = ['', '', '',
                                       '', '', '',
                                       '', '', ''];
-  const refresh = () => {
+  const render = () => {
     for (i=0; i < gameboardArr.length; i++){
       gameboard[i].textContent = gameboardArr[i];
     }
@@ -18,8 +18,8 @@ const boardModule = (() => {
     playX,
     playO,
     clear,
-    refresh,
+    render,
   };  
 })();
 
-boardModule.refresh();
+boardModule.render();
