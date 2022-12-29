@@ -9,16 +9,23 @@
 </head>
 <body>
   <h1>Tic-Tac-Toe</h1>
-  <div id="gameboard">
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
+  <div class="game-container">
+    <div id="gameboard">
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+    </div>
+    <button id="start-btn">Start game</button>
+    <div id="player-display">
+      <div id="p1-turn">Player1's turn, place an X</div>
+      <div id="p2-turn">Player2's turn, place an O</div>
+    </div>
   </div>
 </body>
 <script src="script.js"></script>

@@ -12,6 +12,7 @@ const boardModule = (() => {
         clickedCell = i;
         console.log('clicked ', i);
         console.log(clickedCell);
+
     });
   }
   
@@ -36,14 +37,9 @@ const boardModule = (() => {
 })();
 
 
-const gameplayModule = (() => {
-  const board = boardModule;
-  
-  board.gameboard.addEventListener('click', (event) => {
-    
-  });
-})();
 
-//boardModule.clear();
+
+
+boardModule.clear();
 boardModule.render();
 
