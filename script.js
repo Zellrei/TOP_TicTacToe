@@ -156,6 +156,27 @@ const boardModule = (() => {
   };  
 })();
 
+
+//player creation
+
+const playerFactory = (playerNumber, playerName) => {
+  return {playerNumber, playerName};
+}
+
+const createP1Btn = document.getElementById('p1-name-btn');
+createP1Btn.addEventListener('click', (event) => {
+  event.preventDefault();
+  const P1NewName = document.getElementById('p1-name-field').value;
+  let player1 = playerFactory("P1", P1NewName);
+  console.log(P1NewName);
+});
+console.log(P1NewName);
+
+const createP2Btn = document.getElementById('p2-name-btn');
+
+//comment faire pour que l'objet retourné soit dans le contexte du jeu ?
+//actuellement P1NewName n'est que dans l'event du bouton
+
 boardModule.clear();
 boardModule.render();
 

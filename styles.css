@@ -14,10 +14,16 @@ ul {
 
 li {
   list-style-type: none;
+  margin: 5px;
 }
 
 input[type=text] {
 width: 75px;
+}
+
+.player-box {
+  text-align: center;
+  margin: 5px;
 }
 
 #gameboard {
@@ -30,8 +36,6 @@ width: 75px;
   font-size: 2rem;
   gap: 0px;
 }
-
-
 
 .cell {
   display: grid;
