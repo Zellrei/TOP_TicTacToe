@@ -8,6 +8,18 @@ h1 {
   text-align: center;
 }
 
+ul {
+  list-style-type: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+input[type=text] {
+width: 75px;
+}
+
 #gameboard {
   justify-content: center;
   align-items: center;
@@ -19,12 +31,7 @@ h1 {
   gap: 0px;
 }
 
-#start-btn {
-  margin: 20px 0;
-  width: 150px;
-  display: grid;
-  font-size: 1.5rem;
-}
+
 
 .cell {
   display: grid;
@@ -35,22 +42,45 @@ h1 {
 
 .game-container {
   display: grid;
+  grid-template-columns: 300px 300px 300px;
   justify-content: center;
   justify-items: center;
 }
 
+.bottom-display {
+  display: grid;
+  grid-column: span 3;
+  justify-items: center;
+}
+
+#start-btn {
+  margin: 20px 0;
+  width: 150px;
+  display: grid;
+  font-size: 1.5rem;
+}
+
 #player-display {
   font-size: 1.1rem;
+  width: 300px;
+  
 }
 
 #p1-turn {
   text-align: left;
   color: blue;
-  visibility: hidden;
+  display: none;
 }
 
-#p2-turn {
+#p2-turn {  
   text-align: right;
   color: red;
-  visibility: hidden;
+  display: none;
 }
+
+#winner-display {
+  display: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+

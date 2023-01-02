@@ -18,6 +18,7 @@ const boardModule = (() => {
     currentPlayer = "X";
     moves = 0;
     clear();
+    checkTurn();
     render();
   });
 
@@ -34,6 +35,7 @@ const boardModule = (() => {
           } 
           player1Arr = [];
           player2Arr = [];
+          checkTurn();
           boardModule.readArr();
           boardModule.checkWinner();
           boardModule.render();
@@ -50,12 +52,31 @@ const boardModule = (() => {
     gameboardArr[a] = 'o';
   }
 
+  const checkTurn = () => {
+    const player1DisplayDiv = document.getElementById('p1-turn');
+    const player2DisplayDiv = document.getElementById('p2-turn');
+    if (currentPlayer === 'X') {
+      player1DisplayDiv.style.display = "block";
+      player2DisplayDiv.style.display = "none";
+    }
+    if (currentPlayer === 'O') {
+      player1DisplayDiv.style.display = "none";
+      player2DisplayDiv.style.display = "block";
+    }
+    if (roundOver == 'yes') {
+      player1DisplayDiv.style.display = "none";
+      player2DisplayDiv.style.display = "none";
+    }
+  }
+
   const clear = () => {
     gameboardArr = ['', '', '',
                     '', '', '',
                     '', '', ''];
     roundOver = "no";
     winner = "";
+    const winnerDiv = document.getElementById('winner-display');
+    winnerDiv.textContent = '';
   }
   const render = () => {
     for (i=0; i < gameboardArr.length; i++){
@@ -76,6 +97,8 @@ const boardModule = (() => {
   }
 
   const checkWinner = () => {
+    const winnerDiv = document.getElementById('winner-display');
+
     const winningCombinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -87,7 +110,6 @@ const boardModule = (() => {
       [2, 4, 6]
     ];
     
-
     boardModule.readArr();
 
     for (let i = 0; i < winningCombinations.length; i++) {
@@ -97,6 +119,9 @@ const boardModule = (() => {
           console.log("P1 wins");
           roundOver = "yes";
           winner = "P1";
+          checkTurn();
+          winnerDiv.textContent = `${winner} wins, congratulations !`;
+          winnerDiv.style.display = "block";
           return winner;
       } else if (gameboardArr[winningCombinations[i][0]] == "o" 
         && gameboardArr[winningCombinations[i][1]] == "o" 
@@ -104,12 +129,16 @@ const boardModule = (() => {
           console.log("P2 wins");
           roundOver = "yes";
           winner = "P2";
-          return winner;
+          checkTurn();
+          winnerDiv.textContent = `${winner} wins, congratulations !`;
+          winnerDiv.style.display = "block";
       } 
     }      
 
     if (moves == 8 && winner == "") {
       roundOver = "yes";
+      winnerDiv.textContent = `Nobody wins, it's a tie !`;
+      winnerDiv.style.display = "block";
     }
     moves++;
   }
@@ -118,6 +147,7 @@ const boardModule = (() => {
   return {
     playX,
     playO,
+    checkTurn,
     clear,
     render,
     readArr,

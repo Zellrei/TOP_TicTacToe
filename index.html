@@ -10,6 +10,13 @@
 <body>
   <h1>Tic-Tac-Toe</h1>
   <div class="game-container">
+    <div id="p1-box">
+      <form id="P1-name-form">
+        <li><label id="p1-name" for="Name">Player 1</label></li>
+        <li><input id='p1-name-field' type="text" value="Player1"></li>
+        <li><button>Change name</button></li>
+      </form>
+    </div>
     <div id="gameboard">
       <div class="cell"></div>
       <div class="cell"></div>
@@ -21,10 +28,20 @@
       <div class="cell"></div>
       <div class="cell"></div>
     </div>
-    <button id="start-btn">Start game</button>
-    <div id="player-display">
-      <div id="p1-turn">Player1's turn, place an X</div>
-      <div id="p2-turn">Player2's turn, place an O</div>
+    <div id="p2-box">
+      <form id="p2-name-form">
+        <li><label id="p2-name" for="Name">Player 1</label></li>
+        <li><input id='#p2-name-field' type="text" value="Player2"></li>
+        <li><button>Change name</button></li>
+      </form>
+    </div>
+    <div class="bottom-display">
+      <button id="start-btn">Start game</button>
+      <div id="player-display">
+        <div id="p1-turn">Player1's turn, place an X</div>
+        <div id="p2-turn">Player2's turn, place an O</div>
+      </div>
+      <div id="winner-display">Wins !</div>
     </div>
   </div>
 </body>
