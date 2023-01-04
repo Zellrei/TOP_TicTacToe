@@ -26,6 +26,10 @@ width: 75px;
   margin: 5px;
 }
 
+.player-name {
+  font-weight: bold;
+}
+
 #gameboard {
   justify-content: center;
   align-items: center;

@@ -56,10 +56,12 @@ const boardModule = (() => {
     const player1DisplayDiv = document.getElementById('p1-turn');
     const player2DisplayDiv = document.getElementById('p2-turn');
     if (currentPlayer === 'X') {
+      player1DisplayDiv.textContent = `${player1.playerName}'s turn, click to place an X`
       player1DisplayDiv.style.display = "block";
       player2DisplayDiv.style.display = "none";
     }
     if (currentPlayer === 'O') {
+      player2DisplayDiv.textContent = `${player2.playerName}'s turn, click to place an O`
       player1DisplayDiv.style.display = "none";
       player2DisplayDiv.style.display = "block";
     }
@@ -98,7 +100,6 @@ const boardModule = (() => {
 
   const checkWinner = () => {
     const winnerDiv = document.getElementById('winner-display');
-
     const winningCombinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -116,33 +117,52 @@ const boardModule = (() => {
       if (gameboardArr[winningCombinations[i][0]] == "x" 
         && gameboardArr[winningCombinations[i][1]] == "x" 
         && gameboardArr[winningCombinations[i][2]] == "x"){
-          console.log("P1 wins");
           roundOver = "yes";
           winner = "P1";
           checkTurn();
-          winnerDiv.textContent = `${winner} wins, congratulations !`;
+          winnerDiv.textContent = `${player1.playerName} wins, congratulations !`;
           winnerDiv.style.display = "block";
           return winner;
       } else if (gameboardArr[winningCombinations[i][0]] == "o" 
         && gameboardArr[winningCombinations[i][1]] == "o" 
         && gameboardArr[winningCombinations[i][2]] == "o"){
-          console.log("P2 wins");
           roundOver = "yes";
           winner = "P2";
           checkTurn();
-          winnerDiv.textContent = `${winner} wins, congratulations !`;
+          winnerDiv.textContent = `${player2.playerName} wins, congratulations !`;
           winnerDiv.style.display = "block";
       } 
     }      
 
     if (moves == 8 && winner == "") {
       roundOver = "yes";
+      checkTurn();
       winnerDiv.textContent = `Nobody wins, it's a tie !`;
       winnerDiv.style.display = "block";
     }
     moves++;
   }
 
+  const playerFactory = (playerNumber, playerName) => {
+    return {playerNumber, playerName};
+  }
+  
+  let player1 = playerFactory("P1", "Player 1");
+  let player2 = playerFactory("P2", "Player 2");
+
+  const createP1Btn = document.getElementById('p1-name-btn');
+  createP1Btn.addEventListener('click', (event) => {
+    event.preventDefault();
+    player1 = playerFactory("P1", document.getElementById('p1-name-field').value);
+    document.getElementById('p1-name').textContent = player1.playerName;
+  });
+
+  const createP2Btn = document.getElementById('p2-name-btn');
+  createP2Btn.addEventListener('click', (event) => {
+    event.preventDefault();
+    player2 = playerFactory("P2", document.getElementById('p2-name-field').value);
+    document.getElementById('p2-name').textContent = player2.playerName;
+  });
 
   return {
     playX,
@@ -156,27 +176,8 @@ const boardModule = (() => {
   };  
 })();
 
+  boardModule.clear();
+  boardModule.render();
 
-//player creation
 
-const playerFactory = (playerNumber, playerName) => {
-  return {playerNumber, playerName};
-}
-
-const createP1Btn = document.getElementById('p1-name-btn');
-createP1Btn.addEventListener('click', (event) => {
-  event.preventDefault();
-  const P1NewName = document.getElementById('p1-name-field').value;
-  let player1 = playerFactory("P1", P1NewName);
-  console.log(P1NewName);
-});
-console.log(P1NewName);
-
-const createP2Btn = document.getElementById('p2-name-btn');
-
-//comment faire pour que l'objet retourné soit dans le contexte du jeu ?
-//actuellement P1NewName n'est que dans l'event du bouton
-
-boardModule.clear();
-boardModule.render();
 
