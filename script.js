@@ -120,6 +120,7 @@ const boardModule = (() => {
           roundOver = "yes";
           winner = "P1";
           checkTurn();
+          winnerDiv.style.color = "blue";
           winnerDiv.textContent = `${player1.playerName} wins, congratulations !`;
           winnerDiv.style.display = "block";
           return winner;
@@ -129,6 +130,7 @@ const boardModule = (() => {
           roundOver = "yes";
           winner = "P2";
           checkTurn();
+          winnerDiv.style.color = "red";
           winnerDiv.textContent = `${player2.playerName} wins, congratulations !`;
           winnerDiv.style.display = "block";
       } 
